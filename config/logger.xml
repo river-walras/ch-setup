@@ -1,7 +1,7 @@
 <clickhouse>
   <logger>
     <level>information</level>
-    <rotation>daily</rotation>
+    <size>100M</size>
     <count>3</count>
   </logger>
 </clickhouse>

@@ -1,0 +1,23 @@
+services:
+  clickhouse:
+    image: clickhouse/clickhouse-server:latest-alpine
+    container_name: clickhouse
+    ports:
+      - "${CLICKHOUSE_PORT}:8123"
+      - "${CLICKHOUSE_NATIVE_PORT}:9000"
+    volumes:
+      - type: bind
+        source: ${CLICKHOUSE_DATA_DIR}
+        target: /var/lib/clickhouse
+        bind:
+          create_host_path: true
+      - type: bind
+        source: ${CLICKHOUSE_LOG_DIR}
+        target: /var/log/clickhouse-server
+        bind:
+          create_host_path: true
+      - ./config/logger.xml:/etc/clickhouse-server/config.d/logger.xml:ro
+    environment:
+      - CLICKHOUSE_USER=${CLICKHOUSE_USER}
+      - CLICKHOUSE_PASSWORD=${CLICKHOUSE_PASSWORD}
+      - CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT=1

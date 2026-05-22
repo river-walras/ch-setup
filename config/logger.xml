@@ -1,0 +1,7 @@
+<clickhouse>
+  <logger>
+    <level>information</level>
+    <rotation>daily</rotation>
+    <count>3</count>
+  </logger>
+</clickhouse>

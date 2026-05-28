@@ -17,6 +17,7 @@ services:
         bind:
           create_host_path: true
       - ./config/logger.xml:/etc/clickhouse-server/config.d/logger.xml:ro
+      - ./config/trace_log.xml:/etc/clickhouse-server/config.d/trace_log.xml:ro
     environment:
       - CLICKHOUSE_USER=${CLICKHOUSE_USER}
       - CLICKHOUSE_PASSWORD=${CLICKHOUSE_PASSWORD}
